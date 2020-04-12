@@ -1,5 +1,4 @@
-﻿using MyPhotos.Persistence;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyPhotos.WCF;
 
 namespace MyPhotos.GUI
 {
@@ -171,7 +171,7 @@ namespace MyPhotos.GUI
             ShowPhotos(photos);
         }
 
-        private void ShowPhotos(IEnumerable<Photo> photos)
+        private void ShowPhotos(IEnumerable<PhotoDTO> photos)
         {
             listView1.Items.Clear();
             listView1.Columns.Clear();
@@ -209,7 +209,7 @@ namespace MyPhotos.GUI
             var property = comboBox1.Text;
             var value = textBox2.Text;
             pathTextBox.Text = property + value;
-            IEnumerable<Photo> filteredPhotos= api.GetFilteredPhotos(property, value);
+            IEnumerable<PhotoDTO> filteredPhotos= api.GetFilteredPhotos(property, value);
             ShowPhotos(filteredPhotos);
         }
 

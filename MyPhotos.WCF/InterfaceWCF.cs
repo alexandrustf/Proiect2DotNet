@@ -14,11 +14,11 @@ namespace MyPhotos.WCF
         [OperationContract]
         Guid CreatePhoto(string path, string name, string @event, string place, ICollection<string> persons);
         [OperationContract]
-        IEnumerable<Photo> GetAllPhotos();
+        IEnumerable<PhotoDTO> GetAllPhotos();
         [OperationContract]
         void AddCustomProperty(string id, string name, string value);
         [OperationContract]
-        IEnumerable<Photo> GetFilteredPhotos(string property, string value);
+        IEnumerable<PhotoDTO> GetFilteredPhotos(string property, string value);
 
         [OperationContract]
         IEnumerable<string> GetAllPropertiesAsStrings();
