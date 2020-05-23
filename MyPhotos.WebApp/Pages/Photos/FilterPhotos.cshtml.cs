@@ -8,27 +8,30 @@ using ServiceReference1;
 
 namespace MyPhotos.WebApp.Pages.Photos
 {
-    public class IndexModel : PageModel
+    public class FilterPhotosModel : PageModel
     {
         MyPhotosWcfClient myPhotosWcfClient = new MyPhotosWcfClient();
-        public List<PhotoDTO> Photos { get; set; }
+        public List<PhotoDTO> FilteredPhotos { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string PropertySearched { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string ValueSearched { get; set; }
 
-        public IndexModel()
+        public FilterPhotosModel()
         {
-            Photos = new List<PhotoDTO>();
+            FilteredPhotos = new List<PhotoDTO>();
         }
 
         public async Task OnGetAsync()
         {
-            var photos = await myPhotosWcfClient.GetAllPhotosAsync();
-            foreach (var item in photos)
+            var filteredPhotos = await myPhotosWcfClient.GetFilteredPhotosAsync(PropertySearched, ValueSearched);
+            foreach (var item in filteredPhotos)
             {
                 PhotoDTO pd = new PhotoDTO();
                 pd.Id = item.Id;
                 pd.Name = item.Name;
                 pd.Path = item.Path;
-
-                Photos.Add(pd);
+                FilteredPhotos.Add(pd);
             }
         }
     }

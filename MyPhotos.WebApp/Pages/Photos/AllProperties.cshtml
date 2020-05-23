@@ -1,0 +1,24 @@
+﻿@page
+@model MyPhotos.WebApp.Pages.Photos.AllPropertiesModel
+@{
+    ViewData["Title"] = "AllProperties";
+}
+
+<h1>AllProperties</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> Property Name </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Properties)
+    {
+        <tr style="font-size:small">
+            <td> @Html.DisplayFor(modelItem => item) </td>
+        </tr>
+    }
+    </tbody>
+</table>

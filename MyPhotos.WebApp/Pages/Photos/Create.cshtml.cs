@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyPhotos.WebApp.Pages
+namespace MyPhotos.WebApp.Pages.Photos
 {
-    public class MyPhotosAppModel : PageModel
+    public class CreateModel : PageModel
     {
         public void OnGet()
         {
